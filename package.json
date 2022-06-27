@@ -1,0 +1,20 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "A To Do List built with React.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "React",
+    "ToDoList"
+  ],
+  "author": "Gustavo Lira",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.53.0"
+  }
+}
