@@ -17,15 +17,16 @@ const toDoCardInfoExample = [
 
 const useTodo = () => {
     const [ todos, setTodos ] = useState(toDoCardInfoExample);
-    let newID = 0;
+    
     const addNewToDoItem = ( task ) =>{
-        try{
-            newID = todos[todos.length - 1].id + 1;
-        } catch{
-            newID = 1
+
+        if(!task.title | !task.descr) {
+            return alert("There's no information. Please write a title and a description");
+        } else{
+            let newID = "componente-" + Math.floor(Math.random() * 999999);
+            task.id = newID;
+            setTodos([task, ...todos]);
         }
-        task.id = newID;
-        setTodos([...todos,task]);
     };
 
     const deleteToDoItem = ( id ) => {
