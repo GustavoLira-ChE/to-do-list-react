@@ -1,9 +1,11 @@
 import React, {useContext} from 'react';
 import ToDoContext from '../context/ToDoContext';
+import ToggleEditContext from '../context/ToggleEditContext';
 
 const ToDoCard = ({ toDo }) => {
 
     const { deleteToDoItem, changeToDoState } = useContext(ToDoContext);
+    const { handleToggle } = useContext(ToggleEditContext);
 
     return (
             <div className='card mt-2'>
@@ -17,7 +19,9 @@ const ToDoCard = ({ toDo }) => {
                     </p>
                     <hr />
                     <div className='d-flex justify-content-end'>
-                        <button className='btn btn-sm btn-outline-primary me-2'>
+                        <button 
+                            className='btn btn-sm btn-outline-primary me-2' 
+                            onClick={()=> handleToggle(toDo.id)}>
                             Edit
                         </button>
                         <button className='btn btn-sm btn-outline-danger me-2' onClick={()=> deleteToDoItem(toDo.id)}>
