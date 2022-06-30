@@ -1,25 +1,28 @@
 import React from 'react';
 import ToDoForm from './components/ToDoForm';
 import ToDoList from './components/ToDoList';
+import EditContent from './components/EditContent';
 import { ToDoProvider } from './context/ToDoContext';
+import { ToggleEditProvider } from './context/ToggleEditContext';
 
 const App = () => {
+    
     return (
-        <div>
-            <ToDoProvider>
-                <div className='container mt-4'>
-                    <div className='row'>
-                        <div className='col-8'>
-                            <ToDoList />
+            <div className='container pt-4 relative-container'>
+                <ToDoProvider>
+                    <ToggleEditProvider>
+                        <div className='row'>
+                            <div className='col-8'>
+                                <ToDoList />
+                            </div>
+                            <div className='col-4'>
+                                <ToDoForm />
+                            </div>
                         </div>
-                        <div className='col-4'>
-                            <ToDoForm />
-                        </div>
-                    </div>
-                </div>
-            </ToDoProvider>
-        </div>
-        
+                        <EditContent />
+                    </ToggleEditProvider>
+                </ToDoProvider>
+            </div>
     );
 };
 
