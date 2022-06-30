@@ -2,13 +2,13 @@ import { useState } from "react";
 
 const toDoCardInfoExample = [
     {
-        id: 1,
+        id: "componente-1",
         title: "Title 1",
         descr: "Description 1",
         status: true
     },
     {
-        id: 2,
+        id: "componente-2",
         title: "Title 2",
         descr: "Description 2",
         status: false
@@ -19,7 +19,6 @@ const useTodo = () => {
     const [ todos, setTodos ] = useState(toDoCardInfoExample);
     
     const addNewToDoItem = ( task ) =>{
-
         if(!task.title | !task.descr) {
             return alert("There's no information. Please write a title and a description");
         } else{
@@ -35,10 +34,24 @@ const useTodo = () => {
     };
 
     const changeToDoState = (id) => {
-        console.log(id);
         const newTodos = todos.map(item => {
             if(item.id === id){
                 item.status = !item.status
+            }
+            return item
+        });
+        setTodos(newTodos);
+    };
+
+    const editToDotask = (id, newtask) => {
+        const newTodos = todos.map(item => {
+            if(item.id === id){
+                if(newtask.title && newtask.descr){
+                    item.title = newtask.title;
+                    item.descr = newtask.descr;
+                } else{
+                    alert("Fill both form inputs!")
+                }
             }
             return item
         });
@@ -49,7 +62,8 @@ const useTodo = () => {
         todos,
         addNewToDoItem,
         deleteToDoItem,
-        changeToDoState
+        changeToDoState,
+        editToDotask
     }
 }
 
